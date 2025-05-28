@@ -1,3 +1,5 @@
+Script em Python para conexão com Banco de Dados Postgresql, através de tunel SSH.
+
 Paramiko é usado para executar comandos remotos SSH ou transferir arquivo via ftp.
 
 SSHTunnel é usado para acessar bancos de dados e fazer o port Forwarding.

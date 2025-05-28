@@ -1,18 +1,24 @@
 from sshtunnel import SSHTunnelForwarder
 import psycopg2
+from dotenv import load_dotenv
+import os
+
+# Carrega variáveis do .env
+load_dotenv()
 
 # ====== Configurações SSH ======
-ssh_host = '192.168.1.190'  #IP ou url de conexão
-ssh_port = 22
-ssh_user = 'seu_usuario'
-ssh_password = 'sua_senha'
+ssh_host = os.getenv("SSH_HOST")
+ssh_port = int(os.getenv("SSH_PORT", 22))
+ssh_user = os.getenv("SSH_USER")
+ssh_password = os.getenv("SSH_PASSWORD")
 
 # ====== Configurações PostgreSQL ======
-db_host = '127.0.0.1'  # Sempre localhost ao usar o túnel
-db_port = 5432         # Porta padrão PostgreSQL
-db_name = 'seu_banco'
-db_user = 'seu_usuario_db'
-db_password = 'sua_senha_db'
+db_name = os.getenv("DB_NAME")
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+db_port = int(os.getenv("DB_PORT", 5432))
+db_host = '127.0.0.1'  # via túnel
+local_bind_port = 6543
 
 # Porta local livre para bind
 local_bind_port = 6543
